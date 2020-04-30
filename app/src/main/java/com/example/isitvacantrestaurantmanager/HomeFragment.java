@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
@@ -30,7 +31,11 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.sql.Time;
 import java.text.SimpleDateFormat;
@@ -111,7 +116,7 @@ public class HomeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         mFirestore = FirebaseFirestore.getInstance();
-        uid = mAuth.getCurrentUser().getUid();
+
 
 
 
@@ -237,6 +242,7 @@ public class HomeFragment extends Fragment {
                             TimeSlotMap.put("date", dates);
 
                             TimeSlotMap.put("time_slot", timeslot);
+                            uid = mAuth.getCurrentUser().getUid();
 
 
 
@@ -274,4 +280,5 @@ public class HomeFragment extends Fragment {
         });
         return view;
     }
+
 }
